@@ -36,7 +36,7 @@ public class TeachersController {
     }
 
     @GetMapping("/getAll")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL')")
+    @PreAuthorize("hasAnyRole('PRINCIPAL')")
     public ResponseEntity<Object> getAll() {
         try {
             List<TeachersEntity> teachers = teacherService.getAll();
@@ -55,7 +55,7 @@ public class TeachersController {
     }
 
     @GetMapping("/getBy/{id}")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL')")
+    @PreAuthorize("hasAnyRole('TEACHER','PRINCIPAL')")
     public ResponseEntity<Object> getById(@PathVariable int id) {
         Map<String, String> response = new HashMap<>();
         try {

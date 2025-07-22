@@ -22,7 +22,7 @@ public class StudentController {
 
 
     @PostMapping("/create")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL')")
+    @PreAuthorize("hasAnyRole('TEACHER','PRINCIPAL')")
     public ResponseEntity<Map<String, String>> create(@RequestBody StudentEntity students) {
         Map<String, String> response = new HashMap<>();
         try {
@@ -37,7 +37,7 @@ public class StudentController {
     }
 
     @GetMapping("/getAll")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL')")
+    @PreAuthorize("hasAnyRole('TEACHER','PRINCIPAL')")
     public ResponseEntity<Object> getAll() {
         try {
             List<StudentEntity> students = studentService.getAll();
@@ -56,7 +56,7 @@ public class StudentController {
     }
 
     @GetMapping("/getBy/{id}")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL',STUDENT)")
+    @PreAuthorize("hasAnyRole('TEACHER','PRINCIPAL',STUDENT)")
     public ResponseEntity<Object> getById(@PathVariable int id) {
         Map<String, String> response = new HashMap<>();
         try {
@@ -75,7 +75,7 @@ public class StudentController {
     }
 
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL')")
+    @PreAuthorize("hasAnyRole('TEACHER','PRINCIPAL')")
     public ResponseEntity<Map<String, String>> update(@RequestBody StudentEntity students, @PathVariable int id) {
         Map<String, String> response = new HashMap<>();
         try {
@@ -94,7 +94,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasAnyRole('TEACHERS','PRINCIPAL')")
+    @PreAuthorize("hasAnyRole('TEACHER','PRINCIPAL')")
     public ResponseEntity<Map<String, String>> delete (@PathVariable int id){
         Map<String,String> response = new HashMap<>();
         try {
